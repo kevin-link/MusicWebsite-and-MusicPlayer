@@ -1,6 +1,4 @@
 
-
-
 * {
     margin: 0px;
     padding: 0px;
@@ -48,7 +46,7 @@ header {
                 color: black;
                 text-decoration: none;   /* 底線外觀 */
                 font-size: 1.5rem;
-                /* transition  元件在兩個狀態之間轉場效果 */
+                /* transition  元件在兩個狀態之間轉場效果  & 自己 */
                 transition: all 0.2s ease;
                 &:hover{
                     color: red;
