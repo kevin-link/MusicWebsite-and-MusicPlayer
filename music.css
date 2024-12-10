@@ -59,5 +59,22 @@ header {
     }
 }
 
+section{
+    .cols{
+        border: 2px black solid; 
+        display: flex;
+        padding: 15px; 
+    }
+}
+
+/* 登入按紐 */
+button a{
+    text-decoration: none;
+    transition: all 0.2s ease;
+    &:hover{
+        color: red;
+        border-bottom: 3px solid red;
+    }
+}
 
 
