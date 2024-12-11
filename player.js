@@ -2,10 +2,28 @@
 // play = document.getElementById('play');
 
 
-let song_name = ['kickback', 'onotoke'];
+let song_name = ['onotoke', 'kickback'];
 let song_index = 0;
+let artist = ['CREEPY NUTS', '米津玄師'];
 
 
+// 時間軸計時器
+let songTimer; 
+
+function startSongTimer(){
+    // if(songTimer){
+    //     clearInterval(songTimer);
+    // }
+
+    songTimer = setInterval(handleProgress, 1000);
+}
+
+function stopSongTimer(){
+    if(songTimer){
+        clearInterval(songTimer);
+        songTimer = null;
+    }
+}
 
 
 // play()、pause()是DOM元素，不是 jQuery 的 function，要用 jQuery 取得DOM元素
@@ -16,23 +34,26 @@ function musicplay(){
     if (state == 0){
         audio.play();
         state = 1;
-        setInterval(handleProgress, 1000);
+        startSongTimer();
         // console.log(state);
     }else{
         audio.pause();
         state = 0
+        stopSongTimer();
         // console.log(state);
     }
 }
 
-// 下一首修改音樂，圖片
+// 下一首修改音樂，歌名，歌手，圖片
 function loadsong(song){
     $('#song_title').text(song);
+    $('#artist_name').text(artist[song_index])
 
     $('#Myaudio').attr('src', `./song/${song}.m4a`);
     $('.album').attr('src', `./image/${song}.jpg`);
 
-    console.log(song_name);
+    
+    $('#slider').attr('value', 0);
 }
 
 function nextsong(){
@@ -66,15 +87,13 @@ function handleProgress(){
     slider.attr('value', sliderPercent);
 }
 
-function clickSlider(){
-    const slider = document.getElementById('slider')
-    const width = $('#slider').width();
-    console.log(width);
-
-    let elm = $(this);
-    let xpos = slider.pageX;
-    console.log(xpos);
-}
+// function clickSlider(e){
+//     const slider = document.getElementById('slider')
+//     const width = $('#slider').width();
+//     var elm = $(this);
+//     var xpos = e.pageX - elm.offset().left;
+//     console.log(xpos);
+// }
 
 
 // let state = 0
@@ -108,7 +127,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 window.addEventListener("DOMContentLoaded", (event) => {
     const slider = document.getElementById('slider')
     if (slider) {
-        slider.addEventListener('click', clickSlider());
+        $('#slider').click(function clickSlider(e){
+            
+            const width = $('#slider').width();
+            var elm = $(this);
+            var xpos = e.pageX - elm.offset().left;
+            // console.log(xpos);
+
+            let duration = $('#Myaudio').get(0).duration;
+            var theTime = (xpos / width) * duration;
+
+            $('#Myaudio')[0].currentTime = theTime;
+        });
     }
 })
 
