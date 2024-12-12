@@ -6,6 +6,7 @@ let song_name = ['onotoke', 'kickback', 'idol', 'sunspots', 'alternate', 'happyh
 let artist = ['CREEPY NUTS', '米津玄師', 'YOASOBI', 'JEREMY BLAKE', 'VIBE TRACKS', 'AARON KENNY', 'RIOT'];
 let song_index = 0;
 
+window.onload
 
 // duration：音源的時間, in seconds(用get方式取得)
 // let duration = $('#Myaudio').get(0).duration;
@@ -49,25 +50,52 @@ function musicplay(){
     }
 }
 
+
+document.addEventListener("DOMContentLoaded", function(){
+    const audio = $('#Myaudio');
+    if(audio){
+        audio.currentTime = 0;
+        $('#slider').attr('value', '0');
+    }
+})
 // 下一首更新音樂，歌名，歌手，圖片
 function loadsong(song){
-    $('#song_title').text(song);
-    $('#artist_name').text(artist[song_index]);
+        $('#song_title').text(song);
+        $('#artist_name').text(artist[song_index]);
+        
+        // 設定src屬性
+        $('#Myaudio').attr('src', `./song/${song}.m4a`);
+        $('.album').attr('src', `./image/${song}.jpg`);
     
-    // 設定src屬性
-    $('#Myaudio').attr('src', `./song/${song}.m4a`);
-    $('.album').attr('src', `./image/${song}.jpg`);
-
-    // 更新時間軸，歌曲現在時間
-    let currentTime = $('#Myaudio')[0].currentTime;
-    let timeValue = Math.floor(currentTime);
-    console.log(timeValue);
-    
-    $('#slider').attr('value', timeValue);
-    
-    
-    songTimeText();
+        // 更新時間軸，歌曲現在時間
+        $('#slider').val(0);
+        console.log($('#slider').value);
+        // $('#Myaudio')[0].currentTime = 0;
+        
+        // $('#slider').attr('value', 0);
+        
+        
+        songTimeText();
 }
+
+// function loadsong(song){
+//     $('#song_title').text(song);
+//     $('#artist_name').text(artist[song_index]);
+    
+//     // 設定src屬性
+//     $('#Myaudio').attr('src', `./song/${song}.m4a`);
+//     $('.album').attr('src', `./image/${song}.jpg`);
+
+//     // 更新時間軸，歌曲現在時間
+//     $('#Myaudio')[0].currentTime = 0;
+    
+    
+    
+//     $('#slider').attr('value', 0);
+    
+    
+//     songTimeText();
+// }
 
 function nextsong(){
     if(song_index < song_name.length - 1){
