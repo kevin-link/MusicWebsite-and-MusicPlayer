@@ -2,22 +2,27 @@
 // play = document.getElementById('play');
 
 
-let song_name = ['onotoke', 'kickback'];
+let song_name = ['onotoke', 'kickback', 'idol', 'sunspots', 'alternate', 'happyhaunts', 'coffeestains'];
+let artist = ['CREEPY NUTS', '米津玄師', 'YOASOBI', 'JEREMY BLAKE', 'VIBE TRACKS', 'AARON KENNY', 'RIOT'];
 let song_index = 0;
-let artist = ['CREEPY NUTS', '米津玄師'];
 
 
+// duration：音源的時間, in seconds(用get方式取得)
+// let duration = $('#Myaudio').get(0).duration;
+// 歌曲現在時間
+// let currentTime = $('#Myaudio')[0].currentTime;
 // 時間軸計時器
 let songTimer; 
+let TimeText;
 
+// 時間軸計時器
 function startSongTimer(){
-    // if(songTimer){
-    //     clearInterval(songTimer);
-    // }
-
-    songTimer = setInterval(handleProgress, 1000);
+    let Interval = 1000;
+    songTimer = setInterval(sliderProgress, Interval);
+    // TimeText = setInterval(songTimeText, Interval);
 }
 
+// 停止時間軸計時器
 function stopSongTimer(){
     if(songTimer){
         clearInterval(songTimer);
@@ -44,16 +49,24 @@ function musicplay(){
     }
 }
 
-// 下一首修改音樂，歌名，歌手，圖片
+// 下一首更新音樂，歌名，歌手，圖片
 function loadsong(song){
     $('#song_title').text(song);
-    $('#artist_name').text(artist[song_index])
-
+    $('#artist_name').text(artist[song_index]);
+    
+    // 設定src屬性
     $('#Myaudio').attr('src', `./song/${song}.m4a`);
     $('.album').attr('src', `./image/${song}.jpg`);
 
+    // 更新時間軸，歌曲現在時間
+    let currentTime = $('#Myaudio')[0].currentTime;
+    let timeValue = Math.floor(currentTime);
+    console.log(timeValue);
     
-    $('#slider').attr('value', 0);
+    $('#slider').attr('value', timeValue);
+    
+    
+    songTimeText();
 }
 
 function nextsong(){
@@ -74,17 +87,33 @@ function prevsong(){
     loadsong(song_name[song_index]);
 }
 
-function handleProgress(){
-    // duration：音源的時間(用get方式取得)
+// 更新歌曲現在時間，parseint()轉整數
+function songTimeText(){
+    let currentTime = $('#Myaudio')[0].currentTime;
+    let min =  parseInt(currentTime / 60);
+    let seconds = parseInt(currentTime % 60);
+    
+    // 10秒內，text呈現'00:00'
+    if(seconds < 10){
+        $('#songTimeText').text('0' + min + ':' + '0' + seconds);
+    }else{
+        $('#songTimeText').text('0' + min + ':' + seconds);
+    }
+}
+
+
+function sliderProgress(){
+    // duration：音源的時間, in seconds(用get方式取得)
     let duration = $('#Myaudio').get(0).duration;
     // console.log(duration);
     let currentTime = $('#Myaudio')[0].currentTime;
-    console.log(currentTime);
+    // console.log(currentTime);
 
-    let slider = $('#slider');
+    // let slider = $('#slider');
     let sliderPercent = (currentTime / duration) * 100;
+    $('#slider').attr('value', sliderPercent);
 
-    slider.attr('value', sliderPercent);
+    songTimeText();
 }
 
 // function clickSlider(e){
@@ -94,7 +123,6 @@ function handleProgress(){
 //     var xpos = e.pageX - elm.offset().left;
 //     console.log(xpos);
 // }
-
 
 // let state = 0
 // play.addEventListener('click', musicPlay)
@@ -124,20 +152,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 })
 
+// 移動音樂時間軸
 window.addEventListener("DOMContentLoaded", (event) => {
     const slider = document.getElementById('slider')
     if (slider) {
         $('#slider').click(function clickSlider(e){
             
             const width = $('#slider').width();
-            var elm = $(this);
-            var xpos = e.pageX - elm.offset().left;
-            // console.log(xpos);
-
+            var elm = $(this);                         //  $(this) : "自己"，'#slider'
+            // 滑鼠點擊位置在頁面的X座標 減掉 slider原點(最左邊)的X座標 ; offset().left 離頁面左邊界之距離
+            var xpos = e.pageX - elm.offset().left;                   
+            
             let duration = $('#Myaudio').get(0).duration;
             var theTime = (xpos / width) * duration;
-
             $('#Myaudio')[0].currentTime = theTime;
+            console.log($('#slider').attr('value'));
         });
     }
 })
