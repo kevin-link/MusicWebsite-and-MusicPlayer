@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 header {
-    background-color: white;
+    background-color: rgb(238, 236, 236, 0.7);
     /* flex : section,nav 併排 */
     display: flex;
     flex-wrap: wrap;
@@ -64,6 +64,16 @@ section{
         border: 2px black solid; 
         display: flex;
         padding: 15px; 
+        
+        .card-img-overlay {
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+    }
+    /* hover 放在 .cols 之外，才會影響子元素，顯示歌名歌手 */
+    .cols:hover .card-img-overlay{
+        opacity: 1;
+        box-shadow: inset 0 0 30px 5px gray;
     }
 }
 
