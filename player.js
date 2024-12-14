@@ -17,7 +17,8 @@ function musicplay(){
         audio.play();
         state = 1;
         startSongTimer();
-        // console.log(state);
+        // 撥完換下一首
+        $('#Myaudio').on('ended', nextsong);
     }else{
         audio.pause();
         state = 0
@@ -40,7 +41,7 @@ function stopSongTimer(){
         songTimer = null;
     }
 }
-
+// 時間軸進度條
 function sliderProgress(){
     // duration：音源的時間, in seconds(用get方式取得)
     let duration = $('#Myaudio').get(0).duration;
@@ -48,7 +49,9 @@ function sliderProgress(){
     let currentTime = $('#Myaudio')[0].currentTime;
     
     let sliderPercent = (currentTime / duration) * 100;
-    $('#slider').attr('value', sliderPercent);
+
+    $('#slider').val(sliderPercent);
+    // $('#slider').attr('value', sliderPercent);
 
     songTimeText();
 }
@@ -93,11 +96,28 @@ function loadsong(song){
         // 設定src屬性
         $('#Myaudio').attr('src', `./song/${song}.m4a`);
         $('.album').attr('src', `./image/${song}.jpg`);
-    
+
+
+        // 下一首自動變換背景顏色
+        let red = Math.floor(Math.random() * 255) + 64;
+        let green = Math.floor(Math.random() * 255) + 64;
+        let blue = Math.floor(Math.random() * 255) + 64;
+        let a = 0.3;
+        let bgcolor = 'rgba(' + red + ','+ green + ',' + blue + ',' + a + ')'
+        var bg = $(document.body).css('background', `${bgcolor}`)
+
         // 更新時間軸，歌曲現在時間，修改當前value
         $('#slider').val(0);
             
         songTimeText();
+        // 自動撥放下一首
+        if(state == 1){
+            state = 0;
+            stopSongTimer();
+            musicplay();
+        }else{
+            musicplay();
+        }
 }
 
 // 問題 : id:play抓不到  DOM Button Object
@@ -139,7 +159,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             let duration = $('#Myaudio').get(0).duration;
             var theTime = (xpos / width) * duration;
             $('#Myaudio')[0].currentTime = theTime;
-            console.log($('#slider').attr('value'));
+            // console.log($('#slider').attr('value'));
         });
     }
 })
