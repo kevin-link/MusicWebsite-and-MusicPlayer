@@ -61,7 +61,7 @@ header {
 
 section{
     .cols{
-        border: 2px black solid; 
+        
         display: flex;
         padding: 15px; 
         

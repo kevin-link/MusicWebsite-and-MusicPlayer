@@ -28,10 +28,37 @@
     </header>
 
     <section class="py-5 py-lg-7">
-        <div class="container">
-            <div class="mb-lg-7 mb-5">
-                <h1 class="text-center mb-4">所有商品</h1>
-                <div class="container text-center">
+        <h1 class="text-center mb-4">所有商品</h1>
+        <div class="row">
+        <!-- <div class="container"> -->
+            <div class="col-md-4">
+              <div role="tabpanel">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-center align-items-center">
+                    商品種類
+                  </li>
+                  <!-- list-group-item-action active
+                  data-bs-toggle="list" or "tab" 顯示jpop，原聲帶分類-->
+                  <a href="#pane_1" class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center" data-bs-toggle="list">
+                    所有商品
+                    <span class="badge bg-primary rounded-pill">8</span>
+                  </a>
+                  <a href="#pane_2" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-bs-toggle="list">
+                    JPOP
+                    <span class="badge bg-primary rounded-pill">4</span>
+                  </a>
+                  <a href="#pane_3" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-bs-toggle="list">
+                    原聲帶
+                    <span class="badge bg-primary rounded-pill">4</span>
+                  </a>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8 mb-lg-7 mb-5">
+                <!-- <h1 class="text-center mb-4">所有商品</h1> -->
+                <div class="container tab-content text-center">
+                  <!-- 所有商品 -->
+                  <div class="tab-pane active" id="pane_1" role="tabpanel">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                       <div class="col-md-3">
                          <div class="card">
@@ -203,6 +230,183 @@
                       
                     </div>
                   </div>
+                  <div class="tab-pane" id="pane_2" role="tabpane2">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                      <div class="col-md-3">
+                        <div class="card">
+                       <!-- p-0  上下0 -->
+                           <div class="card-header bg-transparent p-0">
+                             <div class="item-tag">本月精選</div>
+                         
+                             <img src="./image/onotoke.jpg" class="card-img" alt="onotoke">
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="row">
+                                 <div class="col-6 px-0 py-3 border-end text-center">オトノケ</div>
+                                 <div class="col-6 px-0 py-3 text-center">
+                                   <strong>NT$500</strong>
+                                 </div>
+                               </div> 
+                           </div>
+                           <div class="card-footer text-center p-0">
+                             <a class="d-block btn btn-back p-3" href="#">加入購物車</a>
+                           </div>
+                       
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card">
+                       <!-- p-0  上下0 -->
+                           <div class="card-header bg-transparent p-0">
+                             <div class="item-tag">本月精選</div>  
+                             <img src="./image/TAIDADA.jpg" class="card-img" alt="TAIDADA">
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="row">
+                                 <div class="col-6 px-0 py-3 border-end text-center">TAIDADA</div>
+                                 <div class="col-6 px-0 py-3 text-center">
+                                   <strong>NT$500</strong>
+                                 </div>
+                               </div> 
+                           </div>
+                           <div class="card-footer text-center p-0">
+                             <a class="d-block btn btn-back p-3" href="#">加入購物車</a>
+                           </div>
+                       
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card">
+                       <!-- p-0  上下0 -->
+                           <div class="card-header bg-transparent p-0">  
+                              <div class="item-tag">本月精選</div>
+                              <img src="./image/kickback.jpg" class="card-img" alt="kickback">
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="row">
+                                 <div class="col-6 px-0 py-3 border-end text-center">kickback</div>
+                                 <div class="col-6 px-0 py-3 text-center">
+                                   <strong>NT$500</strong>
+                                 </div>
+                               </div> 
+                           </div>
+                           <div class="card-footer text-center p-0">
+                             <a class="d-block btn btn-back p-3" href="#">加入購物車</a>
+                           </div>
+                       
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card">
+                       <!-- p-0  上下0 -->
+                           <div class="card-header bg-transparent p-0">  
+                             <div class="item-tag">本月精選</div>
+                             <img src="./image/idol.jpg" class="card-img" alt="idol">
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="row">
+                                 <div class="col-6 px-0 py-3 border-end text-center">idol</div>
+                                 <div class="col-6 px-0 py-3 text-center">
+                                   <strong>NT$500</strong>
+                                 </div>
+                               </div> 
+                           </div>
+                           <div class="card-footer text-center p-0">
+                             <a class="d-block btn btn-back p-3" href="#">加入購物車</a>
+                           </div>
+                       
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="pane_3" role="tabpane3">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                      <div class="col-md-3">
+                        <div class="card">
+                       <!-- p-0  上下0 -->
+                           <div class="card-header bg-transparent p-0">
+                             <img src="./image/sunspots.jpg" class="card-img" alt="sunspots">
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="row">
+                                 <div class="col-6 px-0 py-3 border-end text-center">SUNSPOTS</div>
+                                 <div class="col-6 px-0 py-3 text-center">
+                                   <strong>NT$500</strong>
+                                 </div>
+                               </div> 
+                           </div>
+                           <div class="card-footer text-center p-0">
+                             <a class="d-block btn btn-back p-3" href="#">加入購物車</a>
+                           </div>
+                       
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card">
+                       <!-- p-0  上下0 -->
+                           <div class="card-header bg-transparent p-0">
+                             
+                             <img src="./image/alternate.jpg" class="card-img" alt="alternate">
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="row">
+                                 <div class="col-6 px-0 py-3 border-end text-center">ALTERNATE</div>
+                                 <div class="col-6 px-0 py-3 text-center">
+                                   <strong>NT$500</strong>
+                                 </div>
+                               </div> 
+                           </div>
+                           <div class="card-footer text-center p-0">
+                             <a class="d-block btn btn-back p-3" href="#">加入購物車</a>
+                           </div>
+                       
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card">
+                       <!-- p-0  上下0 -->
+                           <div class="card-header bg-transparent p-0">  
+                              
+                              <img src="./image/happyhaunts.jpg" class="card-img" alt="happyhaunts">
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="row">
+                                 <div class="col-6 px-0 py-3 border-end text-center">HAPPY HAUNTS</div>
+                                 <div class="col-6 px-0 py-3 text-center">
+                                   <strong>NT$500</strong>
+                                 </div>
+                               </div> 
+                           </div>
+                           <div class="card-footer text-center p-0">
+                             <a class="d-block btn btn-back p-3" href="#">加入購物車</a>
+                           </div>
+                       
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card">
+                       <!-- p-0  上下0 -->
+                           <div class="card-header bg-transparent p-0">  
+                             
+                             <img src="./image/coffeestains.jpg" class="card-img" alt="coffeestains">
+                           </div>
+                           <div class="card-body p-0">
+                              <div class="row">
+                                 <div class="col-6 px-0 py-3 border-end text-center">COFFEESTAINS</div>
+                                 <div class="col-6 px-0 py-3 text-center">
+                                   <strong>NT$500</strong>
+                                 </div>
+                               </div> 
+                           </div>
+                           <div class="card-footer text-center p-0">
+                             <a class="d-block btn btn-back p-3" href="#">加入購物車</a>
+                           </div>
+                       
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+                </div>
             </div>
         </div>
 
